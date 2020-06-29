@@ -6,7 +6,19 @@ const Book {
     }
 }
 
-class UI{}
+class UI{
+    addBookToList(book){
+        const list = document.querySelector('#book__list');
+        const row = document.createElement('tr');
+        row.innerHTML= `
+        <td>${book.title}</td>
+        <td>${book.author}</td>
+        <td>${book.isbn}</td>
+        <td><a href="#" class="delete">X</a></td>
+        `;
+    }
+    list.appendChild(row);
+}
 
 
 
@@ -25,9 +37,10 @@ document.querySelector('.form').addEventListener('submit', function(e){
         //show alert
     }else{
         //add book to list
+        ui.addBookToList(book);
       
     }
 
     
     e.preventDefault();
-})
+});
