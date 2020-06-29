@@ -15,6 +15,13 @@ document.querySelector('.form').addEventListener('submit', function(e){
     const author = document.querySelector('#author').value;
     const isbn = document.querySelector('#isbn').value;
 
+    //validation
+    if(title==''||aithor===''||isbn===''){
+        //show alert
+    }else{
+        //add book to list
+    }
+
     
     e.preventDefault();
 })
