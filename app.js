@@ -55,7 +55,16 @@ class Store {
     }
     return books;
   }
+  static displayBooks() {
+    const books = Store.getBooks();
+    books.forEach(function (book) {
+      const ui = new UI();
+      ui.addBookToList(book);
+    });
+  }
 }
+
+document.addEventListener("DOMContentLoaded", Store.displayBooks);
 
 document.querySelector("#form").addEventListener("submit", function (e) {
   const title = document.querySelector("#title").value;
