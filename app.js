@@ -33,6 +33,11 @@ class UI {
       document.querySelector(".alert").remove();
     }, 3000);
   }
+  clearFields() {
+    document.getElementById("title").value = "";
+    document.getElementById("author").value = "";
+    document.getElementById("isbn").value = "";
+  }
 }
 
 document.querySelector("#form").addEventListener("submit", function (e) {
@@ -53,6 +58,8 @@ document.querySelector("#form").addEventListener("submit", function (e) {
     //add book to list
     ui.addBookToList(book);
 
+    //clear fields
+    ui.clearFields();
     //show alert
     ui.showAlert("Book added!", "success");
   }
