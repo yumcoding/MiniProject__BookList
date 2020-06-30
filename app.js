@@ -18,6 +18,21 @@ class UI {
         `;
     list.appendChild(row);
   }
+
+  showAlert(msg, err) {
+    const div = document.createElement("div");
+    div.className = `alert ${err}`;
+    div.appendChild(document.createTextNode(msg));
+
+    const container = document.querySelector(".container");
+    const form = document.querySelector("#form");
+
+    container.insertBefore(div, form);
+
+    setTimeout(function () {
+      document.querySelector(".alert").remove();
+    }, 3000);
+  }
 }
 
 document.querySelector("#form").addEventListener("submit", function (e) {
@@ -33,9 +48,13 @@ document.querySelector("#form").addEventListener("submit", function (e) {
   //validation
   if (title == "" || author === "" || isbn === "") {
     //show alert
+    ui.showAlert("Please fill in all fields", "error");
   } else {
     //add book to list
     ui.addBookToList(book);
+
+    //show alert
+    ui.showAlert("Book added!", "success");
   }
 
   e.preventDefault();
