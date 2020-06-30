@@ -53,6 +53,12 @@ th {
   font-weight: 500;
 }
 
+a {
+  text-decoration: none;
+  color: #222;
+}
+
+/* alert */
 .alert {
   font-size: 17px;
   padding: 10px;

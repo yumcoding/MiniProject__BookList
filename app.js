@@ -19,6 +19,11 @@ class UI {
     list.appendChild(row);
   }
 
+  removeBook(target) {
+    if (target.classList.contains("delete")) {
+      target.parentElement.parentElement.remove();
+    }
+  }
   showAlert(msg, err) {
     const div = document.createElement("div");
     div.className = `alert ${err}`;
@@ -63,6 +68,16 @@ document.querySelector("#form").addEventListener("submit", function (e) {
     //show alert
     ui.showAlert("Book added!", "success");
   }
+
+  e.preventDefault();
+});
+
+document.querySelector("#book__list").addEventListener("click", function (e) {
+  const ui = new UI();
+
+  ui.removeBook(e.target);
+
+  ui.showAlert("Book Removed!", "success");
 
   e.preventDefault();
 });
