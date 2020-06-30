@@ -45,6 +45,18 @@ class UI {
   }
 }
 
+class Store {
+  static getBooks() {
+    let books;
+    if (localStorage.getItem("books") === null) {
+      books = [];
+    } else {
+      books = JSON.parse(localStorage.getItem("books"));
+    }
+    return books;
+  }
+}
+
 document.querySelector("#form").addEventListener("submit", function (e) {
   const title = document.querySelector("#title").value;
   const author = document.querySelector("#author").value;
