@@ -62,6 +62,22 @@ class Store {
       ui.addBookToList(book);
     });
   }
+
+  static addBook(book) {
+    const books = Store.getBooks();
+    books.push(book);
+    localStorage.setItem("books", JSON.stringify(books));
+  }
+
+  static removeBook(isbn) {
+    const books = Store.getBooks();
+    books.forEach(function (book, index) {
+      if (book.isbn === isbn) {
+        books.splice(index, 1);
+      }
+    });
+    localStorage.setItem("books", JSON.stringify(books));
+  }
 }
 
 document.addEventListener("DOMContentLoaded", Store.displayBooks);
@@ -83,7 +99,7 @@ document.querySelector("#form").addEventListener("submit", function (e) {
   } else {
     //add book to list
     ui.addBookToList(book);
-
+    Store.addBook(book);
     //clear fields
     ui.clearFields();
     //show alert
@@ -97,7 +113,7 @@ document.querySelector("#book__list").addEventListener("click", function (e) {
   const ui = new UI();
 
   ui.removeBook(e.target);
-
+  Store.removeBook(e.target.parentElement.previousElementSibling.textContent);
   ui.showAlert("Book Removed!", "success");
 
   e.preventDefault();
